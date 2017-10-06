@@ -1,0 +1,40 @@
+{
+  "name": "react-lru",
+  "version": "0.0.1",
+  "description": "Least recently used (LRU) cache algorithm rendering of React roots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zekedroid/react-lru.git"
+  },
+  "keywords": [
+    "lru",
+    "react",
+    "react-dom",
+    "infinite",
+    "scroll",
+    "table",
+    "handsontable"
+  ],
+  "author": "Zeke Schmois",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zekedroid/react-lru/issues"
+  },
+  "homepage": "https://github.com/zekedroid/react-lru#readme",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "react-dom": "15.6.2",
+    "react": "15.6.2"
+  },
+  "peerDependencies": {
+    "react": "^0.14 || ^15 || ^16",
+    "react-dom": "^0.14 || ^15 || ^16"
+  }
+}
