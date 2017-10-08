@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/zekedroid/react-lru#readme",
   "dependencies": {
+    "babel-eslint": "^8.0.1",
     "js-lru": "^1.0.0",
     "lodash": "^4.17.4",
     "uuid": "^3.1.0"
@@ -38,6 +39,8 @@
     "babel-preset-react": "6.11.1",
     "babel-preset-stage-0": "6.5.0",
     "chai": "^4.1.2",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
     "jsdom": "9.4.2",
     "mocha": "^4.0.1",
     "react": "15.6.2",

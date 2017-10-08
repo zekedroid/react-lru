@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { expect } from 'chai';
 import { sandbox as sinonSandbox } from 'sinon';
 
-import SimpleMemoizedReactDomContainers from '../SimpleMemoizedReactDomContainers';
-import renderReactCell from '../renderReactCell';
+import SimpleMemoizedReactDomContainers from '../src/SimpleMemoizedReactDomContainers';
+import renderReactCell from '../src/renderReactCell';
 
 class TestLabel extends React.Component {
     static propTypes = {
