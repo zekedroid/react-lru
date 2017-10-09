@@ -1,6 +1,6 @@
 {
   "name": "react-lru",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Least recently used (LRU) cache algorithm rendering of React roots",
   "main": "lib/index.js",
   "scripts": {
