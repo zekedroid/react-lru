@@ -20,7 +20,15 @@
     "table",
     "handsontable"
   ],
-  "author": "Zeke Schmois",
+  "author": {
+    "name": "Zeke Schmois",
+    "email": "zekedroid@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Jackson Westeen"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zekedroid/react-lru/issues"
