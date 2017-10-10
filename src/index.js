@@ -7,3 +7,9 @@ export {
     MemoizedReactDomContainers,
     SimpleMemoizedReactDomContainers,
 }
+
+export default {
+    renderReactCell,
+    MemoizedReactDomContainers,
+    SimpleMemoizedReactDomContainers,
+}
