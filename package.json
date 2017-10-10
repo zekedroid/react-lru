@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha test/dom-mock.js test/**/*-test.js --compilers js:babel-core/register",
     "build": "babel src --out-dir lib",
-    "bundle": "NODE_ENV=production browserify src/index.js -o lib/bundle.js -t [ babelify --presets [ latest react stage-0 ] ] | uglifyjs lib/bundle.js > lib/bundle.min.js"
+    "bundle": "NODE_ENV=production browserify src/index_bundle.js -o lib/bundle.js -t [ babelify --presets [ latest react stage-0 ] ] | uglifyjs lib/bundle.js > lib/bundle.min.js"
   },
   "repository": {
     "type": "git",
