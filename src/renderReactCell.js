@@ -1,4 +1,7 @@
 import ReactDom from 'react-dom';
+import isObject from 'lodash/isObject';
+import values from 'lodash/values';
+import join from 'lodash/join';
 
 /**
  * Renders React JSX into a given DOM element.
@@ -9,10 +12,13 @@ import ReactDom from 'react-dom';
  * @param  {int} options.col                current column number
  * @param  {JSX} options.jsx                React node to render safely
  */
-export default function renderReactCell({ memoizedContainers, getContainer, td, row, col, jsx }) {
-    const getMemoizedContainer = getContainer || ((rowX, colX) => memoizedContainers.getContainer(rowX, colX));
+export default function renderReactCell({ memoizedContainers, getContainer, td, row, col, val, jsx }) {
+    if (isObject(val)) {
+        val = join(values(val),'');
+    }
+    const getMemoizedContainer = getContainer || ((rowX, colX, val) => memoizedContainers.getContainer(rowX, colX, val));
 
-    const container = getMemoizedContainer(row, col);
+    const container = getMemoizedContainer(row, col, val);
 
     ReactDom.render(jsx, container);
 
