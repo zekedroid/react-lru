@@ -15,9 +15,9 @@ export default class SimpleMemoizedReactDomContainers {
         this._instanceId = uuid.v1();
     }
 
-    getContainer(row, col) {
-        return this.getMemoizedContainerRef(row, col) ||
-            this.createNewCellContainer(row, col);
+    getContainer(row, col, val) {
+        return this.getMemoizedContainerRef(row, col, val) ||
+            this.createNewCellContainer(row, col, val);
     }
 
     /**
@@ -45,8 +45,8 @@ export default class SimpleMemoizedReactDomContainers {
      * null. At the same time, bump the priority of the
      * container to the bottom of the list (highest priority)
      */
-    getMemoizedContainerRef(row, col) {
-        const container = get(this.renderedContainers, [row, col, 'container'], null);
+    getMemoizedContainerRef(row, col, val) {
+        const container = get(this.renderedContainers, [row, col, val, 'container'], null);
 
         if (!container) {
             return null;
@@ -57,31 +57,31 @@ export default class SimpleMemoizedReactDomContainers {
 
     /**
      * Create the HTML element but don't attach it to the body.
-     * Memoize it using the row, col combination.
+     * Memoize it using the row, col, val combination.
      */
-    createNewCellContainer(row, col) {
+    createNewCellContainer(row, col, val) {
         const container = document.createElement('div');
         container.setAttribute('id', `hot-renderers-${row}-${col}-${this._instanceId}`);
-        this.memoizeContainer(container, row, col);
+        this.memoizeContainer(container, row, col, val);
         return container;
     }
 
     /**
      * Memoize the given container into the `renderedContainers`
-     * attribute, then append the `{ row, col }` object to the
+     * attribute, then append the `{ row, col, val }` object to the
      * list of ids used for releasing cached containers.
      */
-    memoizeContainer(container, row, col) {
+    memoizeContainer(container, row, col, val) {
         const {
             renderedContainers,
             renderedContainersIds,
         } = this;
-        setWith(renderedContainers, [row, col, 'container'], container, Object);
+        setWith(renderedContainers, [row, col, val, 'container'], container, Object);
 
         if (renderedContainersIds.length >= this.MAX_CACHE) {
             this.removeFirstContainer();
         }
 
-        renderedContainersIds.push({ row, col });
+        renderedContainersIds.push({ row, col, val });
     }
 }

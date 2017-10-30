@@ -11,9 +11,9 @@ export default class MemoizedReactDomContainers {
         this.renderedContainers = new LRUCache(maxCache);
     }
 
-    getContainer(row, col) {
-        return this.getMemoizedContainerRef(row, col) ||
-            this.createNewCellContainer(row, col);
+    getContainer(row, col, val) {
+        return this.getMemoizedContainerRef(row, col, val) ||
+            this.createNewCellContainer(row, col, val);
     }
 
     /**
@@ -32,8 +32,8 @@ export default class MemoizedReactDomContainers {
      * null. At the same time, bump the priority of the
      * container to the bottom of the list (highest priority)
      */
-    getMemoizedContainerRef(row, col) {
-        const container = this.renderedContainers.get([row, col]);
+    getMemoizedContainerRef(row, col, val) {
+        const container = this.renderedContainers.get([row, col, val]);
 
         if (!container) {
             return null;
@@ -44,26 +44,26 @@ export default class MemoizedReactDomContainers {
 
     /**
      * Create the HTML element but don't attach it to the body.
-     * Memoize it using the row, col combination.
+     * Memoize it using the row, col, val combination.
      */
-    createNewCellContainer(row, col) {
+    createNewCellContainer(row, col, val) {
         const container = document.createElement('div');
         container.setAttribute('class', `hot-renderers-${row}-${col}-${this._instanceId}`);
-        this.memoizeContainer(container, row, col);
+        this.memoizeContainer(container, row, col, val);
         return container;
     }
 
     /**
      * Memoize the given container into the `renderedContainers`
-     * attribute, then append the `{ row, col }` object to the
+     * attribute, then append the `{ row, col, val }` object to the
      * list of ids used for releasing cached containers.
      */
-    memoizeContainer(container, row, col) {
+    memoizeContainer(container, row, col, val) {
         if (this.renderedContainers.size >= this.MAX_CACHE) {
             const oldContainer = this.renderedContainers.shift().value;
             this.removeFirstContainer(oldContainer);
         }
 
-        this.renderedContainers.set([row, col], container);
+        this.renderedContainers.set([row, col, val], container);
     }
 }
