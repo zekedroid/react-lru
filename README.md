@@ -1,7 +1,7 @@
 # react-lru
 Least recently used (LRU) cache algorithm rendering of React roots
 
-For more in depth discussion on why this is necessary, see my [medium post](https://medium.com/p/23d6a8624d45/edit).
+For more in depth discussion on why this is necessary, see my [medium post](https://medium.com/@zekeschmois/rendering-react-elements-into-infinite-scrollable-tables-using-least-recently-used-lru-cache-23d6a8624d45).
 
 
 ## Installation
