@@ -1,7 +1,7 @@
 # react-lru
 Least recently used (LRU) cache algorithm rendering of React roots
 
-For more in depth discussion on why this is necessary, see my [medium post](https://medium.com/@zekeschmois/rendering-react-elements-into-infinite-scrollable-tables-using-least-recently-used-lru-cache-23d6a8624d45).
+For more in depth discussion on why this is necessary, see my [Medium post](https://medium.com/@zekeschmois/rendering-react-elements-into-infinite-scrollable-tables-using-least-recently-used-lru-cache-23d6a8624d45).
 
 
 ## Installation
@@ -9,7 +9,7 @@ For more in depth discussion on why this is necessary, see my [medium post](http
 To install run
 
 ```shell
-npm intall --save react-lru
+npm install --save react-lru
 ```
 
 Use this library by importing the two main components into your project
@@ -22,7 +22,7 @@ import { renderReactCell, MemoizedReactDomContainers } from 'react-lru';
 
 This library allows you to render React elements into an HTML element that is never removed (or at least controlled by an upper bound and removed when reaching a set number of cached elements).
 
-The most common place where this might be used is in an infinite scrollable table that does not do proper garbage collection of React components, such as Handsontable.
+The most common place where this might be used is in an infinite scrollable table that does not do proper garbage collection of React components, such as [Handsontable](https://handsontable.com).
 
 An example renderer might look like:
 
@@ -70,18 +70,18 @@ const memoizedContainers = new MemoizedReactDomContainers(2000);
 console.log(memoizedContainers.renderedContainers.size) // 0 at first
 ```
 
-For a full list of API methods, see the [`js-lru` documentation](https://github.com/rsms/js-lru#api);
+For a full list of API methods, see the [`js-lru` documentation](https://github.com/rsms/js-lru#api).
 
 ### `renderReactCell`
 
 Passed in the form of an options object:
 
-`memoizedContainers`: a cache instance. The minimum requirements are that it have a method for getting a memoized cell based on the row and column indeces. This library comes with `MemoizedReactDomContainers` which uses the LRU cache algorithm for an optimal solution.
-`getContainer`: (optional) in the case that the `MemoizedReactDomContainers` class is not used, this is a function that takes `row` and `col` as its arguments and returns the memoized container per the user's own implementation of the cache.
-`td`: the HTML element to render the memoized container into. Note that this element will get wiped on every call to `renderReactCell` and the memoized container will be added as a child using the `td.appendChild` method.
-`row`: integer value of the row index
-`col`: integer value of the column index
-`jsx`: React JSX to render into a memoized container
+- `memoizedContainers`: a cache instance. The minimum requirements are that it have a method for getting a memoized cell based on the row and column indeces. This library comes with `MemoizedReactDomContainers` which uses the LRU cache algorithm for an optimal solution.
+- `getContainer`: (optional) in the case that the `MemoizedReactDomContainers` class is not used, this is a function that takes `row` and `col` as its arguments and returns the memoized container per the user's own implementation of the cache.
+- `td`: the HTML element to render the memoized container into. Note that this element will get wiped on every call to `renderReactCell` and the memoized container will be added as a child using the `td.appendChild` method.
+- `row`: integer value of the row index
+- `col`: integer value of the column index
+- `jsx`: React JSX to render into a memoized container
 
 ### `MemoizedReactDomContainers`
 
